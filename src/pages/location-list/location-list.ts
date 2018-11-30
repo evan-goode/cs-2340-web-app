@@ -21,28 +21,52 @@ export class LocationListPage {
         this.navCtrl.push(LocationPage, { location });
     }
 
-    ionViewDidLoad() {
-        axios.get("https://www.ridgefieldttt.com/2340api.php?src=locations").then(response => {
-            const lines = response.data.split("\n");
-            this.locations = lines.filter(line => line.length).map(line => {
-                const split = line.split(",");
-                return {
-                    id: split[10],
-                    name: split[0],
-                    type: split[1],
-                    zip: split[2],
-                    phone: split[3],
-                    state: split[4],
-                    address: split[5],
-                    website: split[6],
-                    latitude: split[7],
-                    longitude: split[8],
-                    city: split[9],
-                };
-            });
-            console.log(this.locations);
-        }).catch(error => {
-            console.error(error);
+    parseCsv(csv: String) {
+        const lines = response.data.split("\n");
+        return lines.filter(line => line.length).map(line => {
+            return line.split(",");
         });
+    }
+
+    async getLocations() {
+        const locationResponse = await axios.get("https://www.ridgefieldttt.com/2340api.php?src=locations");
+        const donationResponse = await axios.get("https://www.ridgefieldttt.com/2340api.php?src=donations");
+        const locationEntries = parseCsv(locationsResponse);
+        const donationEntries = parseCsv(donationsResponse);
+
+        const createDonation = entry => ({
+            item: entry[1],
+            date: entry[2],
+            location: entry[3],
+            user: entry[4],
+            fulldesc: entry[5],
+            value: entry[6],
+            category: entry[7],
+        });
+
+        this.locations = locationEntries.map(locationEntry => {
+            const id = locationEntry[10];
+            const donations = donationEntries.filter(donationEntry => (
+                donationEntry[0] === id
+            )).map(createDonation);
+            return {
+                id,
+                donations,
+                name: entry[0],
+                type: entry[1],
+                zip: entry[2],
+                phone: entry[3],
+                state: entry[4],
+                address: entry[5],
+                website: entry[6],
+                latitude: entry[7],
+                longitude: entry[8],
+                city: entry[9],
+            };
+        });
+    }
+
+    ionViewWillEnter() {
+        getLocations();
     }
 }
