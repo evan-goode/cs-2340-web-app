@@ -21,13 +21,13 @@ export class SignInPage {
         //Make API call.
         axios.post('https://ridgefieldttt.com/2340api.php', {
             src: 'login',
-            user: this.username,
-            pass: this.password
-        })
-        .then(function (response) {
+            user: this.username.value,
+            pass: this.password.value
+        }).then(function(response) {
             if (response.data === "true") {
                 this.navCtrl.push(LocationListPage);
             } else {
+                console.log("This didn't work "+response.data);
                 this.wrong = true;
             }
         })
