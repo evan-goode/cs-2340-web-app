@@ -10,6 +10,7 @@ import { SignInPage } from '../pages/sign-in/sign-in';
 import { RegisterPage } from '../pages/register/register';
 import { LocationListPage } from '../pages/location-list/location-list';
 import { LocationPage } from '../pages/location/location';
+import { MainPage } from '../pages/main/main';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { LocationPage } from '../pages/location/location';
     SignInPage,
     RegisterPage,
     LocationListPage,
-    LocationPage
+    LocationPage,
+    MainPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,8 @@ import { LocationPage } from '../pages/location/location';
     SignInPage,
     RegisterPage,
     LocationListPage,
-    LocationPage
+    LocationPage,
+    MainPage
   ],
   providers: [
     StatusBar,
