@@ -10,10 +10,6 @@ import axios from "axios";
     templateUrl: 'location-list.html',
 })
 
-const normalizePhone = (string: String) => {
-    return `+1${string.split("").filter(character => !isNaN(character)).join(""))}`;
-};
-
 export class LocationListPage {
     locations: any;
 
@@ -36,7 +32,6 @@ export class LocationListPage {
                     type: split[1],
                     zip: split[2],
                     phone: split[3],
-                    normalizedPhone: normalizePhone(split[3]),
                     state: split[4],
                     address: split[5],
                     website: split[6],
