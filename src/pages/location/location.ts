@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import axios from "axios";
+
 @Component({
   selector: 'page-location',
   templateUrl: 'location.html',
@@ -15,7 +17,11 @@ export class LocationPage {
     }
 
     ionViewDidLoad() {
-        console.log('ionViewDidLoad LocationPage');
+        axios.get("https://www.ridgefieldttt.com/2340api.php?src=donations").then(response => {
+            console.log(response);
+        }).catch(error => {
+            console.error(error);
+        });
     }
 
 }
