@@ -13,4 +13,5 @@
         </ion-item>
     </ion-list>
     <button ion-button block (click)="signIn()">Sign In</button>
+    <p *ngIf="wrong">Your login didn't work. Time to tray again!!!!</p>
 </ion-content>
