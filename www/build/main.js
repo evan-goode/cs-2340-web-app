@@ -193,12 +193,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_sign_in_sign_in__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_register_register__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_location_list_location_list__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_location_location__ = __webpack_require__(299);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -220,6 +222,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_7__pages_sign_in_sign_in__["a" /* SignInPage */],
                 __WEBPACK_IMPORTED_MODULE_8__pages_register_register__["a" /* RegisterPage */],
                 __WEBPACK_IMPORTED_MODULE_9__pages_location_list_location_list__["a" /* LocationListPage */],
+                __WEBPACK_IMPORTED_MODULE_10__pages_location_location__["a" /* LocationPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -234,6 +237,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_7__pages_sign_in_sign_in__["a" /* SignInPage */],
                 __WEBPACK_IMPORTED_MODULE_8__pages_register_register__["a" /* RegisterPage */],
                 __WEBPACK_IMPORTED_MODULE_9__pages_location_list_location_list__["a" /* LocationListPage */],
+                __WEBPACK_IMPORTED_MODULE_10__pages_location_location__["a" /* LocationPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -320,17 +324,39 @@ var LocationListPage = /** @class */ (function () {
     function LocationListPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.locations = [];
     }
+    LocationListPage.prototype.locationClick = function (location) {
+        this.navCtrl.push(LocationPage);
+    };
     LocationListPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
         __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get("https://www.ridgefieldttt.com/2340api.php?src=locations").then(function (response) {
-            console.log(response.json());
+            var lines = response.data.split("\n");
+            _this.locations = lines.filter(function (line) { return line.length; }).map(function (line) {
+                var split = line.split(",");
+                return {
+                    id: split[10],
+                    name: split[0],
+                    type: split[1],
+                    zip: split[2],
+                    phone: split[3],
+                    state: split[4],
+                    address: split[5],
+                    website: split[6],
+                    latitude: split[7],
+                    longitude: split[8],
+                    city: split[9],
+                };
+            });
+            console.log(_this.locations);
         }).catch(function (error) {
-            console.log("error");
+            console.error(error);
         });
     };
     LocationListPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-location-list',template:/*ion-inline-start:"/home/evan/git/cs-2340-web-app/src/pages/location-list/location-list.html"*/'<!--\n  Generated template for the LocationListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>location-list</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/evan/git/cs-2340-web-app/src/pages/location-list/location-list.html"*/,
+            selector: 'page-location-list',template:/*ion-inline-start:"/home/evan/git/cs-2340-web-app/src/pages/location-list/location-list.html"*/'<!--\n  Generated template for the LocationListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>location-list</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-list *ngFor="let location of locations">\n        <p>\n            <a (click)="locationClick(location)">{{ location.name }}</a>\n        </p>\n    </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/evan/git/cs-2340-web-app/src/pages/location-list/location-list.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _b || Object])
     ], LocationListPage);
@@ -339,6 +365,46 @@ var LocationListPage = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=location-list.js.map
+
+/***/ }),
+
+/***/ 299:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LocationPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var LocationPage = /** @class */ (function () {
+    function LocationPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    LocationPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad LocationPage');
+    };
+    LocationPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-location',template:/*ion-inline-start:"/home/evan/git/cs-2340-web-app/src/pages/location/location.html"*/'<!--\n  Generated template for the LocationPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>location</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/evan/git/cs-2340-web-app/src/pages/location/location.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _b || Object])
+    ], LocationPage);
+    return LocationPage;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=location.js.map
 
 /***/ })
 

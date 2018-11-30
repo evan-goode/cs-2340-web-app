@@ -14,5 +14,9 @@
 
 
 <ion-content padding>
-
+    <ion-list *ngFor="let location of locations">
+        <p>
+            <a (click)="locationClick(location)">{{ location.name }}</a>
+        </p>
+    </ion-list>
 </ion-content>
