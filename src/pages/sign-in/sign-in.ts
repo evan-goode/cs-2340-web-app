@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { LocationListPage } from '../location-list/location-list';
+
 @Component({
     selector: 'page-sign-in',
     templateUrl: 'sign-in.html',
@@ -13,6 +15,6 @@ export class SignInPage {
     }
     signIn() {
         //Make API call.
-        
+        this.navCtrl.push(LocationListPage);
     }
 }

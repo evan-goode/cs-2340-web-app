@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
+import { LocationListPage } from '../location-list/location-list';
 
 @Component({
     selector: 'page-main',
@@ -14,7 +15,7 @@ export class MainPage {
         console.log('ionViewDidLoad MainPage');
     }
     viewLocations() {
-        //Wei ting...
+        this.navCtrl.push(LocationListPage);
     }
     viewMap() {
         //Wei ting...

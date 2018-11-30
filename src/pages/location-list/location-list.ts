@@ -14,9 +14,10 @@ export class LocationListPage {
     }
 
     ionViewDidLoad() {
-        const request = await axios.get("https://www.ridgefieldttt.com/2340api.php", {src: "locations"});
-        const json = await request.json();
-        console.log(json);
-        console.log('ionViewDidLoad LocationListPage');
+        axios.get("https://www.ridgefieldttt.com/2340api.php?src=locations").then(response => {
+            console.log(response.json());
+        }).catch(error => {
+            console.log("error")
+        });
     }
 }

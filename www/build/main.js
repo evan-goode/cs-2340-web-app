@@ -68,7 +68,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/john/Documents/GitHub/cs-2340-web-app/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Young Money\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <button ion-button block (click)="signIn()">Sign In</button>\n    <button ion-button block (click)="register()">Register</button>\n</ion-content>\n'/*ion-inline-end:"/Users/john/Documents/GitHub/cs-2340-web-app/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/evan/git/cs-2340-web-app/src/pages/home/home.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>\n            Young Money\n        </ion-title>\n    </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <button ion-button block (click)="signIn()">Sign In</button>\n    <button ion-button block (click)="register()">Register</button>\n</ion-content>\n'/*ion-inline-end:"/home/evan/git/cs-2340-web-app/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]])
     ], HomePage);
@@ -86,6 +86,7 @@ var HomePage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SignInPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__location_list_location_list__ = __webpack_require__(270);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -95,6 +96,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var SignInPage = /** @class */ (function () {
@@ -107,10 +109,11 @@ var SignInPage = /** @class */ (function () {
     };
     SignInPage.prototype.signIn = function () {
         //Make API call.
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__location_list_location_list__["a" /* LocationListPage */]);
     };
     SignInPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-sign-in',template:/*ion-inline-start:"/Users/john/Documents/GitHub/cs-2340-web-app/src/pages/sign-in/sign-in.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>Young Money</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item>\n            <ion-input placeholder="Username" #username></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-input type="password" placeholder="Password" #password></ion-input>\n        </ion-item>\n    </ion-list>\n    <button ion-button block (click)="signIn()">Sign In</button>\n</ion-content>\n'/*ion-inline-end:"/Users/john/Documents/GitHub/cs-2340-web-app/src/pages/sign-in/sign-in.html"*/,
+            selector: 'page-sign-in',template:/*ion-inline-start:"/home/evan/git/cs-2340-web-app/src/pages/sign-in/sign-in.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>Young Money</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content padding>\n    <ion-list>\n        <ion-item>\n            <ion-input placeholder="Username" #username></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-input type="password" placeholder="Password" #password></ion-input>\n        </ion-item>\n    </ion-list>\n    <button ion-button block (click)="signIn()">Sign In</button>\n</ion-content>\n'/*ion-inline-end:"/home/evan/git/cs-2340-web-app/src/pages/sign-in/sign-in.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _b || Object])
     ], SignInPage);
@@ -150,7 +153,7 @@ var RegisterPage = /** @class */ (function () {
     };
     RegisterPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-register',template:/*ion-inline-start:"/Users/john/Documents/GitHub/cs-2340-web-app/src/pages/register/register.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>Young Money</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content padding>\n    <p>Thanks for trying to join the best app in the game, Young Money. Here you will register yourself and everyone will be proud of you.</p>\n    <ion-list>\n        <ion-item>\n            <ion-input placeholder="Name" #name></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-input placeholder="Username" #username></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-input type="password" placeholder="Password" #password></ion-input>\n        </ion-item>\n        <ion-select interface="popover">\n            <ion-option value="user">User</ion-option>\n            <ion-option value="locationemployee">Location Employee</ion-option>\n            <ion-option value="admin">Admin</ion-option>\n        </ion-select>\n    </ion-list>\n    <button ion-button block (click)="signIn()">Sign Up!!!!!!!!!!!!!!!!!</button>\n</ion-content>\n'/*ion-inline-end:"/Users/john/Documents/GitHub/cs-2340-web-app/src/pages/register/register.html"*/,
+            selector: 'page-register',template:/*ion-inline-start:"/home/evan/git/cs-2340-web-app/src/pages/register/register.html"*/'<ion-header>\n    <ion-navbar>\n        <ion-title>Young Money</ion-title>\n    </ion-navbar>\n</ion-header>\n<ion-content padding>\n    <p>Thanks for trying to join the best app in the game, Young Money. Here you will register yourself and everyone will be proud of you.</p>\n    <ion-list>\n        <ion-item>\n            <ion-input placeholder="Name" #name></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-input placeholder="Username" #username></ion-input>\n        </ion-item>\n        <ion-item>\n            <ion-input type="password" placeholder="Password" #password></ion-input>\n        </ion-item>\n        <ion-select interface="popover">\n            <ion-option value="user">User</ion-option>\n            <ion-option value="locationemployee">Location Employee</ion-option>\n            <ion-option value="admin">Admin</ion-option>\n        </ion-select>\n    </ion-list>\n    <button ion-button block (click)="signIn()">Sign Up!!!!!!!!!!!!!!!!!</button>\n</ion-content>\n'/*ion-inline-end:"/home/evan/git/cs-2340-web-app/src/pages/register/register.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]])
     ], RegisterPage);
@@ -189,12 +192,14 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_home_home__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_sign_in_sign_in__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_register_register__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_location_list_location_list__ = __webpack_require__(270);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -213,7 +218,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_7__pages_sign_in_sign_in__["a" /* SignInPage */],
-                __WEBPACK_IMPORTED_MODULE_8__pages_register_register__["a" /* RegisterPage */]
+                __WEBPACK_IMPORTED_MODULE_8__pages_register_register__["a" /* RegisterPage */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_location_list_location_list__["a" /* LocationListPage */],
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -226,7 +232,8 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* MyApp */],
                 __WEBPACK_IMPORTED_MODULE_6__pages_home_home__["a" /* HomePage */],
                 __WEBPACK_IMPORTED_MODULE_7__pages_sign_in_sign_in__["a" /* SignInPage */],
-                __WEBPACK_IMPORTED_MODULE_8__pages_register_register__["a" /* RegisterPage */]
+                __WEBPACK_IMPORTED_MODULE_8__pages_register_register__["a" /* RegisterPage */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_location_list_location_list__["a" /* LocationListPage */],
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -277,7 +284,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/john/Documents/GitHub/cs-2340-web-app/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/john/Documents/GitHub/cs-2340-web-app/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/evan/git/cs-2340-web-app/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/evan/git/cs-2340-web-app/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -285,6 +292,53 @@ var MyApp = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 270:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LocationListPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios__ = __webpack_require__(279);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_axios__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var LocationListPage = /** @class */ (function () {
+    function LocationListPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    LocationListPage.prototype.ionViewDidLoad = function () {
+        __WEBPACK_IMPORTED_MODULE_2_axios___default.a.get("https://www.ridgefieldttt.com/2340api.php?src=locations").then(function (response) {
+            console.log(response.json());
+        }).catch(function (error) {
+            console.log("error");
+        });
+    };
+    LocationListPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-location-list',template:/*ion-inline-start:"/home/evan/git/cs-2340-web-app/src/pages/location-list/location-list.html"*/'<!--\n  Generated template for the LocationListPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>location-list</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/evan/git/cs-2340-web-app/src/pages/location-list/location-list.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavParams */]) === "function" && _b || Object])
+    ], LocationListPage);
+    return LocationListPage;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=location-list.js.map
 
 /***/ })
 
