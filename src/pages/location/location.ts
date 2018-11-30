@@ -7,11 +7,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class LocationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    location: any;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LocationPage');
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
+        console.log(navParams);
+        this.location = navParams.data.location;
+    }
+
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad LocationPage');
+    }
 
 }
