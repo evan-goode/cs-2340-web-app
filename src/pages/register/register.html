@@ -1,18 +1,25 @@
-<!--
-  Generated template for the RegisterPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>register</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <ion-title>Young Money</ion-title>
+    </ion-navbar>
 </ion-header>
-
-
 <ion-content padding>
-
+    <p>Thanks for trying to join the best app in the game, Young Money. Here you will register yourself and everyone will be proud of you.</p>
+    <ion-list>
+        <ion-item>
+            <ion-input placeholder="Name" #name></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input placeholder="Username" #username></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input type="password" placeholder="Password" #password></ion-input>
+        </ion-item>
+        <ion-select interface="popover">
+            <ion-option value="user">User</ion-option>
+            <ion-option value="locationemployee">Location Employee</ion-option>
+            <ion-option value="admin">Admin</ion-option>
+        </ion-select>
+    </ion-list>
+    <button ion-button block (click)="signIn()">Sign Up!!!!!!!!!!!!!!!!!</button>
 </ion-content>
