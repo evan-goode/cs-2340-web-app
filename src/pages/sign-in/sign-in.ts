@@ -2,7 +2,7 @@ import { ViewChild, Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import axios from 'axios';
 
-import { LocationListPage } from '../location-list/location-list';
+import { MainPage } from '../main/main';
 
 @Component({
     selector: 'page-sign-in',
@@ -19,16 +19,21 @@ export class SignInPage {
     }
     signIn() {
         //Make API call.
-        axios.post('https://ridgefieldttt.com/2340api.php', {
-            src: 'login',
-            user: this.username.value,
-            pass: this.password.value
-        }).then(function(response) {
-            console.log(response.data);
-            if (response.data === "true") {
-                this.navCtrl.push(LocationListPage);
+        const formData = new FormData();
+        formData.set("src", "login");
+        formData.set("user", this.username.value);
+        formData.set("pass", this.password.value);
+        axios({
+            method: 'post',
+            data: formData,
+            url: 'https://ridgefieldttt.com/2340api.php'
+        }).then(response => {
+            console.log(response);
+            if (response.data) {
+                this.navCtrl.insert(0, MainPage).then(() => {
+                    this.navCtrl.popToRoot();
+                });
             } else {
-                console.log("This didn't work "+response.data);
                 this.wrong = true;
             }
         })

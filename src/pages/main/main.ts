@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 import { LocationListPage } from '../location-list/location-list';
+import { MapPage } from '../map/map';
 
 @Component({
     selector: 'page-main',
@@ -18,7 +19,7 @@ export class MainPage {
         this.navCtrl.push(LocationListPage);
     }
     viewMap() {
-        //Wei ting...
+        this.navCtrl.push(MapPage);
     }
     logOut() {
         this.navCtrl.insert(0, HomePage).then(() => {
