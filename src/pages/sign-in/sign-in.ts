@@ -24,6 +24,7 @@ export class SignInPage {
             user: this.username.value,
             pass: this.password.value
         }).then(function(response) {
+            console.log(response.data);
             if (response.data === "true") {
                 this.navCtrl.push(LocationListPage);
             } else {
