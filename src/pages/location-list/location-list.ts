@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { LocationPage } from '../location/location';
+
 import axios from "axios";
 
 @Component({
@@ -16,7 +18,7 @@ export class LocationListPage {
     }
 
     locationClick(location: any) {
-        this.navCtrl.push(LocationPage);
+        this.navCtrl.push(LocationPage, { location });
     }
 
     ionViewDidLoad() {
