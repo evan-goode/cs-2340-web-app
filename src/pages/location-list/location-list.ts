@@ -22,7 +22,7 @@ export class LocationListPage {
     }
 
     parseCsv(csv: String) {
-        const lines = response.data.split("\n");
+        const lines = csv.data.split("\n");
         return lines.filter(line => line.length).map(line => {
             return line.split(",");
         });
@@ -31,8 +31,8 @@ export class LocationListPage {
     async getLocations() {
         const locationResponse = await axios.get("https://www.ridgefieldttt.com/2340api.php?src=locations");
         const donationResponse = await axios.get("https://www.ridgefieldttt.com/2340api.php?src=donations");
-        const locationEntries = parseCsv(locationsResponse);
-        const donationEntries = parseCsv(donationsResponse);
+        const locationEntries = this.parseCsv(locationResponse);
+        const donationEntries = this.parseCsv(donationResponse);
 
         const createDonation = entry => ({
             item: entry[1],
@@ -43,30 +43,35 @@ export class LocationListPage {
             value: entry[6],
             category: entry[7],
         });
+        console.log(donationResponse);
+        console.log(donationEntries);
 
         this.locations = locationEntries.map(locationEntry => {
-            const id = locationEntry[10];
-            const donations = donationEntries.filter(donationEntry => (
-                donationEntry[0] === id
-            )).map(createDonation);
+            const id = parseInt(locationEntry[10]);
+            console.log({id});
+            console.log({donationEntries});
+            const donations = donationEntries.filter(donationEntry => {
+                return parseInt(donationEntry[0]) === id;
+            }).map(createDonation);
             return {
                 id,
                 donations,
-                name: entry[0],
-                type: entry[1],
-                zip: entry[2],
-                phone: entry[3],
-                state: entry[4],
-                address: entry[5],
-                website: entry[6],
-                latitude: entry[7],
-                longitude: entry[8],
-                city: entry[9],
+                name: locationEntry[0],
+                type: locationEntry[1],
+                zip: locationEntry[2],
+                phone: locationEntry[3],
+                state: locationEntry[4],
+                address: locationEntry[5],
+                website: locationEntry[6],
+                latitude: locationEntry[7],
+                longitude: locationEntry[8],
+                city: locationEntry[9],
             };
         });
     }
 
     ionViewWillEnter() {
-        getLocations();
+        console.log("entered");
+        this.getLocations();
     }
 }
