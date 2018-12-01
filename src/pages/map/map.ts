@@ -1,13 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {
-    GoogleMaps,
-    GoogleMap,
-    GoogleMapsEvent,
-    Marker,
-    GoogleMapsAnimation,
-    MyLocation
-} from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, GoogleMapsAnimation } from '@ionic-native/google-maps';
 import axios from "axios";
 
 @Component({
@@ -36,7 +29,6 @@ export class MapPage {
             let locationEntries = this.parseCsv(response.data);
             this.locations = locationEntries.map(locationEntry => {
                 const id = parseInt(locationEntry[10]);
-                console.log({id});
                 return {
                     id,
                     name: locationEntry[0],
@@ -62,7 +54,7 @@ export class MapPage {
                     lat: 33.7890,
                     lng: -84.3880
                 },
-                zoom: 11
+                zoom: 10
             }
         });
         this.locations.forEach(location => {
