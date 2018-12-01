@@ -16,7 +16,7 @@ export class LocationPage {
         this.location = navParams.data.location;
     }
 
-    ionViewDidLoad() {
+    ionViewWillEnter() {
         axios.get("https://www.ridgefieldttt.com/2340api.php?src=donations").then(response => {
             console.log(response);
         }).catch(error => {
