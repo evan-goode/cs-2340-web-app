@@ -19,4 +19,7 @@ export class LocationPage {
             console.error(error);
         });
     }
+    showDonationDetail(donation: any) {
+        this.navCtrl.push(DonationPage, { donation });
+    }
 }
