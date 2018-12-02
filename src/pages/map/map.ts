@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { GoogleMaps, GoogleMap, GoogleMapsAnimation } from '@ionic-native/google-maps';
-import axios from "axios";
+import { HTTP } from '@ionic-native/http';
 
 @Component({
     selector: 'page-map',
@@ -10,7 +10,7 @@ import axios from "axios";
 export class MapPage {
     map: GoogleMap;
     locations: any;
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: HTTP) {
     }
 
     ionViewDidLoad() {
@@ -25,7 +25,9 @@ export class MapPage {
     }
 
     getLocations() {
-        axios.get("https://www.ridgefieldttt.com/2340api.php?src=locations").then(response => {
+        this.http.get("https://www.ridgefieldttt.com/2340api.php", {
+            src: "locations"
+        }, {}).then(response => {
             let locationEntries = this.parseCsv(response.data);
             this.locations = locationEntries.map(locationEntry => {
                 const id = parseInt(locationEntry[10]);

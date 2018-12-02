@@ -1,6 +1,6 @@
 import { ViewChild, Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import axios from 'axios';
+import { HTTP } from '@ionic-native/http';
 
 import { MainPage } from '../main/main';
 
@@ -13,21 +13,16 @@ export class RegisterPage {
     @ViewChild('password') password;
     @ViewChild('type') type;
     wrong: any;
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: HTTP) {
     }
     register() {
         //Make API call.
-        const formData = new FormData();
-        formData.set("dest", "register");
-        formData.set("user", this.username.value);
-        formData.set("pass", this.password.value);
-        formData.set("type", this.type.value);
-        axios({
-            method: 'post',
-            data: formData,
-            url: 'https://ridgefieldttt.com/2340api.php'
-        }).then(response => {
-            console.log(response);
+        this.http.post('https://ridgefieldttt.com/2340api.php', {
+            dest: "register",
+            user: this.username.value,
+            pass: this.password.value,
+            type: this.type.value
+        }, {}).then(response => {
             if (response.data) {
                 this.navCtrl.insert(0, MainPage).then(() => {
                     this.navCtrl.popToRoot();
@@ -35,9 +30,9 @@ export class RegisterPage {
             } else {
                 this.wrong = true;
             }
-        })
-        .catch(function (error) {
-            console.log(error);
+        }).catch(error => {
+            this.wrong = true;
+            console.log("error. "+JSON.stringify(error));
         });
     }
     ionViewDidLoad() {

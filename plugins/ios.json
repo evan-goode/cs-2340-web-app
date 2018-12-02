@@ -7,11 +7,14 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "io.halfpast.youngmoney"
+    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.halfpast.youngmoney"
     },
     "cordova-plugin-googlemaps": {
-      "API_KEY_FOR_IOS": "AIzaSyDEbqL4mYF5i32fB4NlqYwFX1bI3Is6yts",
+      "API_KEY_FOR_IOS": "AIzaSyB2H9xpJK5ruJzrzWXkxLM8LPr3BrTA65c",
       "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
       "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
       "PACKAGE_NAME": "io.halfpast.youngmoney"
@@ -32,5 +35,9 @@
       "PACKAGE_NAME": "io.halfpast.youngmoney"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.halfpast.youngmoney"
+    }
+  }
 }

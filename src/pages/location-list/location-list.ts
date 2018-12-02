@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { HTTP } from '@ionic-native/http';
 
 import { LocationPage } from '../location/location';
-
-import axios from "axios";
 
 @Component({
     selector: 'page-location-list',
@@ -13,7 +12,7 @@ import axios from "axios";
 export class LocationListPage {
     locations: any;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http: HTTP) {
         this.locations = [];
     }
 
@@ -29,8 +28,8 @@ export class LocationListPage {
     }
 
     async getLocations() {
-        const locationResponse = await axios.get("https://www.ridgefieldttt.com/2340api.php?src=locations");
-        const donationResponse = await axios.get("https://www.ridgefieldttt.com/2340api.php?src=donations");
+        const locationResponse = await this.http.get("https://www.ridgefieldttt.com/2340api.php", { src: "locations" }, {});
+        const donationResponse = await this.http.get("https://www.ridgefieldttt.com/2340api.php", { src: "donations" }, {});
         const locationEntries = this.parseCsv(locationResponse.data);
         const donationEntries = this.parseCsv(donationResponse.data);
 
