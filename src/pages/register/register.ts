@@ -22,7 +22,6 @@ export class RegisterPage {
         formData.set("user", this.username.value);
         formData.set("pass", this.password.value);
         formData.set("type", this.type.value);
-        console.log("type beast: "+this.type.value);
         axios({
             method: 'post',
             data: formData,
