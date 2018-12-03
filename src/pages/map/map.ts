@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { GoogleMaps, GoogleMap, GoogleMapsAnimation } from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, GoogleMapsAnimation, MyLocation } from '@ionic-native/google-maps';
 import { HTTP } from '@ionic-native/http';
 
 @Component({
@@ -59,7 +59,14 @@ export class MapPage {
                 zoom: 10
             }
         });
-        this.map.getMyLocation();
+        this.map.getMyLocation().then((location: MyLocation) => {
+            this.map.addMarkerSync({
+                title: "Your Location",
+                snippet: "Having a cool time here?",
+                position: location.latLng,
+                animation: GoogleMapsAnimation.BOUNCE
+            });
+        });
         this.locations.forEach(location => {
             this.map.addMarkerSync({
                 title: location.name,
