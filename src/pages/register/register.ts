@@ -35,7 +35,5 @@ export class RegisterPage {
             console.log("error. "+JSON.stringify(error));
         });
     }
-    ionViewDidLoad() {
-        console.log('ionViewDidLoad RegisterPage');
-    }
+    ionViewDidLoad() {}
 }

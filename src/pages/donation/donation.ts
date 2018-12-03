@@ -9,15 +9,18 @@ import { getDonation } from '../../model';
     templateUrl: 'donation.html',
 })
 export class DonationPage {
+    loaded: any;
     donationId: any;
     donation: any;
     constructor(public navCtrl: NavController, public navParams: NavParams, public http: HTTP) {
         this.donationId = navParams.data.donationId;
         this.donation = {};
+        this.loaded = false;
     }
 
     async loadDonation() {
         this.donation = await getDonation(this.http, this.donationId);
+        this.loaded = true;
     }
 
     ionViewDidLoad() {

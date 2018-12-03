@@ -14,18 +14,20 @@
 
 
 <ion-content padding>
-    <h2>Item</h2>
-    <p>{{donation.item}}</p>
-    <h2>User</h2>
-    <p>{{donation.user}}</p>
-    <h2>Location</h2>
-    <p>{{donation.locationName}}</p>
-    <h2>Date</h2>
-    <p>{{donation.date}}</p>
-    <h2>Full Description</h2>
-    <p>{{donation.fullDescription}}</p>
-    <h2>Value</h2>
-    <p>{{donation.value}}</p>
-    <h2>Category</h2>
-    <p>{{donation.category}}</p>
+    <div *ngIf="loaded">
+        <h2>Item</h2>
+        <p>{{donation.item}}</p>
+        <h2>User</h2>
+        <p>{{donation.user}}</p>
+        <h2>Location</h2>
+        <p>{{donation.locationName}}</p>
+        <h2>Date</h2>
+        <p>{{donation.date}}</p>
+        <h2>Full Description</h2>
+        <p>{{donation.fullDescription}}</p>
+        <h2>Value</h2>
+        <p>{{donation.value}}</p>
+        <h2>Category</h2>
+        <p>{{donation.category}}</p>
+    </div>
 </ion-content>
