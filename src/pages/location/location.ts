@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HTTP } from '@ionic-native/http';
 
+import { DonationPage } from '../donation/donation';
+
 @Component({
   selector: 'page-location',
   templateUrl: 'location.html',
