@@ -4,16 +4,45 @@
     </ion-navbar>
 </ion-header>
 <ion-content padding>
-    <h1>{{location.name}}</h1>
-    <h2>Address</h2>
-    <p>{{location.address}}</p>
-    <h2>Phone Number</h2>
-    <p>{{location.phone}}</p>
-    <h2>Website</h2>
-    <p><a href="{{location.website}}">{{location.website}}</a></p>
-    <h2>Donations</h2>
-    <ion-list *ngFor="let donation of ((location && location.donations) || [])">
-        <h3 (click)="showDonationDetail(donation)">{{donation.item}}</h3>
-    </ion-list>
-    <button ion-button (click)="showNewDonation(location)">New Donation</button>
+    <div *ngIf="loaded">
+        <ion-list>
+            <ion-item>
+                <h2>Search Donations</h2>
+            </ion-item>
+            <ion-item>
+                <ion-input placeholder="Match text" #searchText></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-select interface="popover" #searchMethod>
+                    <ion-option value="item" selected>Search by Name</ion-option>
+                    <ion-option value="category">Search by Category</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <button ion-button (click)="search()">Search</button>
+            </ion-item>
+        </ion-list>
+        <div *ngIf="searchResults">
+            <div *ngIf="searchResults.length">
+                <ion-list *ngFor="let donation of searchResults">
+                    <ion-item>
+                        <a (click)="showDonationDetail(donation)">{{donation.item}}</a>
+                    </ion-item>
+                </ion-list>
+            </div>
+            <p *ngIf="!searchResults.length">No results.</p>
+        </div>
+        <h1>{{location.name}}</h1>
+        <h2>Address</h2>
+        <p>{{location.address}}</p>
+        <h2>Phone Number</h2>
+        <p>{{location.phone}}</p>
+        <h2>Website</h2>
+        <p><a href="{{location.website}}">{{location.website}}</a></p>
+        <h2>Donations</h2>
+        <ion-list *ngFor="let donation of ((location && location.donations) || [])">
+            <h3 (click)="showDonationDetail(donation)">{{donation.item}}</h3>
+        </ion-list>
+        <button ion-button (click)="showNewDonation(location)">New Donation</button>
+    </div>
 </ion-content>
