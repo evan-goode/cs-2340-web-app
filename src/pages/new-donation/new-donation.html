@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>New Donation</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <h2>Item</h2>
+    <ion-input placeholder="Item" #item></ion-input>
+    <h2>User</h2>
+    <ion-input placeholder="User" #user></ion-input>
+    <h2>Date</h2>
+    <ion-input placeholder="Date" #date></ion-input>
+    <h2>Full Description</h2>
+    <ion-input placeholder="Full Description" #fullDescription></ion-input>
+    <h2>Value</h2>
+    <ion-input placeholder="Value" #value></ion-input>
+    <h2>Category</h2>
+    <ion-input placeholder="Category" #category></ion-input>
+    <button ion-button (click)="createDonation()">Submit</button>
+</ion-content>

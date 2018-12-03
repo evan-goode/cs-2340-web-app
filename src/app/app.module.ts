@@ -10,37 +10,34 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SignInPage } from '../pages/sign-in/sign-in';
 import { RegisterPage } from '../pages/register/register';
+import { DonationPage } from '../pages/donation/donation';
 import { LocationListPage } from '../pages/location-list/location-list';
 import { LocationPage } from '../pages/location/location';
 import { MainPage } from '../pages/main/main';
 import { MapPage } from '../pages/map/map';
+import { NewDonationPage } from '../pages/new-donation/new-donation';
 
-@NgModule({
-  declarations: [
+const pages = [
     MyApp,
     HomePage,
     SignInPage,
     RegisterPage,
+    DonationPage,
     LocationListPage,
     LocationPage,
     MainPage,
-    MapPage
-  ],
+    MapPage,
+    NewDonationPage,
+];
+
+@NgModule({
+  declarations: pages.slice(),
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    SignInPage,
-    RegisterPage,
-    LocationListPage,
-    LocationPage,
-    MainPage,
-    MapPage
-  ],
+  entryComponents: pages.slice(),
   providers: [
     StatusBar,
     SplashScreen,

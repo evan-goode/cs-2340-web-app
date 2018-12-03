@@ -12,8 +12,8 @@
     <h2>Website</h2>
     <p><a href="{{location.website}}">{{location.website}}</a></p>
     <h2>Donations</h2>
-    <ion-list *ngFor="let donation of location.donations">
+    <ion-list *ngFor="let donation of ((location && location.donations) || [])">
         <h3 (click)="showDonationDetail(donation)">{{donation.item}}</h3>
     </ion-list>
-    <button ion-button>New Donation</button>
+    <button ion-button (click)="showNewDonation(location)">New Donation</button>
 </ion-content>
