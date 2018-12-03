@@ -59,6 +59,7 @@ export class MapPage {
                 zoom: 10
             }
         });
+        this.map.getMyLocation();
         this.locations.forEach(location => {
             this.map.addMarkerSync({
                 title: location.name,
