@@ -27,7 +27,7 @@ export class LocationPage {
         this.searchResults = null;
     }
     showNewDonation(location: any) {
-        this.navCtrl.push(NewDonationPage, { locationId: location.id });
+        this.navCtrl.push(NewDonationPage, { location: location });
     }
     showDonationDetail(donation: any) {
         this.navCtrl.push(DonationPage, { donationId: donation.id });

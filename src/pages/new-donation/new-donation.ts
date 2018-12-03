@@ -9,7 +9,7 @@ import { newDonation } from "../../model";
     templateUrl: 'new-donation.html',
 })
 export class NewDonationPage {
-    locationId: any;
+    location: any;
 
     @ViewChild('item') item;
     @ViewChild('user') user;
@@ -19,12 +19,13 @@ export class NewDonationPage {
     @ViewChild('category') category;
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public http: HTTP) {
-        this.locationId = navParams.data.locationId;
+        this.location = navParams.data.location;
     }
 
     async createDonation() {
         await newDonation(this.http, {
-            locationId: this.locationId,
+            locationId: this.location.id,
+            locationName: this.location.name,
             item: this.item.value,
             user: this.user.value,
             date: this.date.value,

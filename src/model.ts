@@ -1,3 +1,5 @@
+const API_ENDPOINT = "https://www.ridgefieldttt.com/2340api.php";
+
 const parseCsv = contents => {
     const lines = contents.split("\n");
     return lines.filter(line => line.length).map(line => {
@@ -6,7 +8,7 @@ const parseCsv = contents => {
 }
 
 export const getDonations = async http => {
-    const donationResponse = await http.get("https://www.ridgefieldttt.com/2340api.php", { src: "donations" }, {});
+    const donationResponse = await http.get(API_ENDPOINT, { src: "donations" }, {});
     const donationEntries = parseCsv(donationResponse.data);
 
     return donationEntries.map((entry, index) => ({
@@ -23,7 +25,7 @@ export const getDonations = async http => {
 };
 
 export const getLocations = async http => {
-    const locationResponse = await http.get("https://www.ridgefieldttt.com/2340api.php", { src: "locations" }, {});
+    const locationResponse = await http.get(API_ENDPOINT, { src: "locations" }, {});
     const locationEntries = parseCsv(locationResponse.data);
 
     const allDonations = await getDonations(http);
@@ -63,9 +65,10 @@ export const getLocation = async (http, locationId) => {
 };
 
 export const newDonation = async (http, donation) => {
-    const response = await http.post("https://ridgefieldttt.com/2340api.php", {
+    const response = await http.post(API_ENDPOINT, {
         dest: "donations",
         locid: donation.locationId,
+        location: donation.locationName,
         item: donation.item,
         date: donation.date,
         user: donation.user,
